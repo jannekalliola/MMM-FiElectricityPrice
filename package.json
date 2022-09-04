@@ -1,0 +1,11 @@
+{
+    "name": "mmm-fielectricityprice",
+    "version": "0.0.1",
+    "description": "Finnish Electricity price chart",
+    "main": "MMM-fielectricityprice.js",
+    "author": "Janne Kalliola",
+    "license": "MIT",
+    "dependencies": {
+        "chart.js": "3.9.x"
+    }
+}
