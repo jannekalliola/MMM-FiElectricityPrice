@@ -43,7 +43,9 @@ The module has the following configuration options:
   <tbody>
     <tr>
       <td><code>dataSource</code></td>
-      <td><code>https://www.nordpoolgroup.com/api/marketdata/page/35?currency=EUR</code></td>
+      <td><code>https://www.nordpoolgroup.com/
+	  api/marketdata/page/35?
+	  currency=EUR</code></td>
       <td>The URL where to load the data. Nord Pool lists the available pages here: https://www.nordpoolgroup.com/api/marketdata/queries/</td>
     </tr>
     <tr>
