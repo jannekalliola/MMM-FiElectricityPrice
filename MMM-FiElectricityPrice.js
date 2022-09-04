@@ -29,7 +29,7 @@ Module.register("MMM-FiElectricityPrice", {
 	},
 
 	getScripts: function() {
-		return [this.file('node_modules/chart.js/dist/Chart.min.js')];
+		return [this.file('node_modules/chart.js/dist/chart.min.js')];
 	},
 
 	start: function() {
