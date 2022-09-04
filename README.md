@@ -89,6 +89,11 @@ The module has the following configuration options:
       <td>The color of the grid lines.</td>
     </tr>
     <tr>
+      <td><code>labelColor</code></td>
+	  <td><code>#fff</code></td>
+      <td>The color of the axis labels.</td>
+    </tr>
+    <tr>
       <td><code>pastColor</code></td>
 	  <td><code>rgba(255, 255, 255, 0.5)</code></td>
       <td>The border color of the past hour bars.</td>

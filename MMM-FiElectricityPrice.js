@@ -16,6 +16,7 @@ Module.register("MMM-FiElectricityPrice", {
 		averageColor: '#fff',
 		showGrid: true,
 		gridColor: 'rgba(255, 255, 255, 0.3)',
+		labelColor: '#fff',
 		pastColor: 'rgba(255, 255, 255, 0.5)',
 		pastBg: 'rgba(255, 255, 255, 0.3)',
 		currentColor: '#fff',
@@ -229,7 +230,15 @@ Module.register("MMM-FiElectricityPrice", {
 					scales: {
 						y: {
 							grid: gridConfig,
-							beginAtZero: true
+							beginAtZero: true,
+							ticks: {
+								color: this.config.labelColor
+							}
+						},
+						x: {
+							ticks: {
+								color: this.config.labelColor
+							}
 						}
 					},
 					animation: false,
