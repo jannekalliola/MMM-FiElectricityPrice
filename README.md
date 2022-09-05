@@ -5,6 +5,8 @@ The module loads the electricity prices when started and then every day at 16:01
 
 The module reads the data that is shown on this page: https://www.nordpoolgroup.com/en/Market-data1/Dayahead/Area-Prices/FI/Hourly/?view=table
 
+![Screenshot](fielectricityprice.png "Screenshot")
+
 ## Installation
 
 Clone this repository in your modules folder, and install dependencies:
