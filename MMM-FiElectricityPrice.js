@@ -12,6 +12,7 @@ Module.register("MMM-FiElectricityPrice", {
 		loadingMessage: 'Loading data...',
 		showPastHours: 24,
 		showFutureHours: 36,
+		hourOffset: 1,
 		showAverage: true,
 		averageColor: '#fff',
 		showGrid: true,
@@ -67,10 +68,15 @@ Module.register("MMM-FiElectricityPrice", {
     },
 
 	getPriceData: function() {
-        this.sendSocketNotification('GET_PRICEDATA', this.config.dataSource);
+		console.log('getPriceData');
+        this.sendSocketNotification('GET_PRICEDATA', {
+			url: this.config.dataSource,
+			hourOffset: this.config.hourOffset
+		});
     },
 
     socketNotificationReceived: function(notification, payload) { 
+		console.log('socketNotificationReceived');
         if(notification === "PRICEDATA") {
 			this.error = false;
 			this.priceData = payload;

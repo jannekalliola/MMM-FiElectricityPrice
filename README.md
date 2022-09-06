@@ -71,6 +71,11 @@ The module has the following configuration options:
       <td>The amount of future hours to show.</td>
     </tr>
     <tr>
+      <td><code>hourOffset</code></td>
+	  <td><code>1</code></td>
+      <td>The number of hours to offset the Nord Pool times that are given in CET/CEST. Value 1 corrects the time to Finland and the Baltics, 0 works for countries in the CET/CEST timezone, and -1 for countries in GMT.</td>
+    </tr>
+    <tr>
       <td><code>showAverage</code></td>
 	  <td><code>false</code></td>
       <td>Flag to control whether the average price over seven days (future and past) is shown as a line on top of the bars.</td>
