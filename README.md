@@ -1,7 +1,7 @@
 # MMM-FiElectricityPrice
 Magic Mirror Module to display Finnish electricity prices from Nord Pool. The module can be used to show data from other regions from Nord Pool, but I have not tested it with them.
 
-The module loads the electricity prices when started and then every day at 16:01 local time of your MagicMirror installation. The prices are shown as a bar chart with optional average value and highlights for high prices, limit is configurable.
+The module loads the electricity prices when started and then every day at 16:01 local time of your MagicMirror installation. The prices are shown as a bar chart with optional average value and highlights for high and low prices, both limits are configurable.
 
 The module reads the data that is shown on this page: https://www.nordpoolgroup.com/en/Market-data1/Dayahead/Area-Prices/FI/Hourly/?view=table
 
@@ -133,7 +133,7 @@ The module has the following configuration options:
     <tr>
       <td><code>alertLimit</code></td>
 	  <td><code>false</code></td>
-      <td>The limit in euro cents or <code>average</code> to set the limit for pricier hours. The limit is not used when the value is set to <code>false</code>.</td>
+      <td>The limit in euro cents or <code>average</code> to set the lower limit for pricier hours. The limit is not used when the value is set to <code>false</code>.</td>
     </tr>
     <tr>
       <td><code>alertColor</code></td>
@@ -144,6 +144,21 @@ The module has the following configuration options:
       <td><code>alertBg</code></td>
 	  <td><code>rgba(255, 0,0, 0.8)</code></td>
       <td>The fill color of the alert hour bars.</td>
+    </tr>
+    <tr>
+      <td><code>safeLimit</code></td>
+	  <td><code>false</code></td>
+      <td>The limit in euro cents or <code>average</code> to set the upper limit for inexpensive hours. The limit is not used when the value is set to <code>false</code>.</td>
+    </tr>
+    <tr>
+      <td><code>safeColor</code></td>
+	  <td><code>rgba(255, 0, 0, 1)</code></td>
+      <td>The border color of the safe hour bars.</td>
+    </tr>
+    <tr>
+      <td><code>safeBg</code></td>
+	  <td><code>rgba(255, 0,0, 0.8)</code></td>
+      <td>The fill color of the safe hour bars.</td>
     </tr>
     <tr>
       <td><code>updateUIInterval</code></td>

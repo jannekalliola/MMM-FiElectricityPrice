@@ -27,6 +27,9 @@ Module.register("MMM-FiElectricityPrice", {
 		alertLimit: false,
 		alertColor: 'rgba(255, 0, 0, 1)',
 		alertBg: 'rgba(255, 0,0, 0.8)',
+		safeLimit: false,
+		safeColor: 'rgba(0, 255, 0, 1)',
+		safeBg: 'rgba(0, 255,0, 0.8)',
 		updateUIInterval: 5 * 60
 	},
 
@@ -153,12 +156,21 @@ Module.register("MMM-FiElectricityPrice", {
 			let showColor = [];
 			let showBg = [];
 			let alertLimit = false;
+			let safeLimit = false;
 			if(this.config.alertLimit !== false) {
 				if(this.config.alertLimit == 'average') {
 					alertLimit = this.priceMetadata['average'];
 				}
 				else {
 					alertLimit = this.config.alertLimit * 1000;
+				}
+			}
+			if(this.config.safeLimit !== false) {
+				if(this.config.safeLimit == 'average') {
+					safeLimit = this.priceMetadata['average'];
+				}
+				else {
+					safeLimit = this.config.safeLimit * 1000;
 				}
 			}
 			
@@ -178,6 +190,10 @@ Module.register("MMM-FiElectricityPrice", {
 				else if(alertLimit !== false && this.priceData[i].value > alertLimit) {
 					showColor.push(this.config.alertColor);
 					showBg.push(this.config.alertBg);
+				}
+				else if(safeLimit !== false && this.priceData[i].value < safeLimit) {
+					showColor.push(this.config.safeColor);
+					showBg.push(this.config.safeBg);
 				}
 				else if(i < currentHourMark) {
 					showColor.push(this.config.futureColor);
