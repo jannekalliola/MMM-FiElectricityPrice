@@ -30,6 +30,7 @@ Module.register("MMM-FiElectricityPrice", {
 		safeLimit: false,
 		safeColor: 'rgba(0, 255, 0, 1)',
 		safeBg: 'rgba(0, 255,0, 0.8)',
+		tickInterval: false,
 		updateUIInterval: 5 * 60
 	},
 
@@ -232,6 +233,7 @@ Module.register("MMM-FiElectricityPrice", {
 				gridConfig['display'] = false;
 			}
 
+			let self = this;
 			var myChart = new Chart(canvas, {
 				type: 'bar',
 				data: {
@@ -259,7 +261,19 @@ Module.register("MMM-FiElectricityPrice", {
 						},
 						x: {
 							ticks: {
-								color: this.config.labelColor
+								color: this.config.labelColor,
+								callback: function(value, index, ticks) {
+									let val = this.getLabelForValue(value);
+									if(self.config.tickInterval > 0) {
+										let hour = val.split(':');
+										hour = parseInt(hour[0]);
+										if(hour % self.config.tickInterval == 0) {
+											return val;
+										}
+										return null;
+									}
+									return val;
+								}
 							}
 						}
 					},

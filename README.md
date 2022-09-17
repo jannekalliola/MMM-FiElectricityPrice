@@ -101,6 +101,11 @@ The module has the following configuration options:
       <td>The color of the axis labels.</td>
     </tr>
     <tr>
+      <td><code>tickInterval</code></td>
+	  <td><code>false</code></td>
+      <td>The interval between ticks (hours on the grid). Default is <code>false</code> to use automatic algorithm. The calculation is based on the hour value, for example, <code>3</code> shows hours 0:00, 3:00, 6:00, etc., and <code>4</code> shows hours 0:00, 4:00, 8:00, etc.</td>
+    </tr>
+    <tr>
       <td><code>pastColor</code></td>
 	  <td><code>rgba(255, 255, 255, 0.5)</code></td>
       <td>The border color of the past hour bars.</td>
