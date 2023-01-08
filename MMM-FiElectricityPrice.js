@@ -220,7 +220,10 @@ Module.register("MMM-FiElectricityPrice", {
 					color: this.config.averageColor,
 					borderColor: this.config.averageColor,
 					pointRadius: 0,
-					order: 1
+					order: 1,
+					datalabels: {
+                        display: false
+                    }
 				};
 			}
 			
@@ -246,7 +249,10 @@ Module.register("MMM-FiElectricityPrice", {
 						borderColor: showColor,
 						borderWidth: 1,
 						barPercentage: 0.75,
-						order: 2
+						order: 2,
+						datalabels: {
+                            display: false
+                        }
 					},
 					averageSet]
 				},
