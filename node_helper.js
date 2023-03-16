@@ -11,7 +11,7 @@ module.exports = NodeHelper.create({
 
 	socketNotificationReceived: function(notification, payload) {
         if(notification === 'GET_PRICEDATA') {
-            this.getPriceData(payload.url, payload.hourOffset);
+            this.getPriceData(payload.url, payload.hourOffset, payload.priceOffset);
         }
 	},
 
@@ -21,9 +21,10 @@ module.exports = NodeHelper.create({
 	 * data or an error.
 	 *
 	 * @param String url The URL
-	 * @param Int hourOffset The local time offset from CET/CEST
+	 * @param Int hourOffset The local time offset from CET/CEST.
+	 * @param Double priceOffset The offset to be added on top of the price.
 	 */
-	getPriceData(url, hourOffset) {
+	getPriceData(url, hourOffset, priceOffset) {
 		https.get(url, (res) => {
 			let body = '';
 
@@ -34,7 +35,7 @@ module.exports = NodeHelper.create({
 			res.on('end', () => {
 				try {
 					let json = JSON.parse(body);
-					let ret = this.parsePriceData(json, hourOffset);
+					let ret = this.parsePriceData(json, hourOffset, priceOffset);
 					if(ret === false) {
 						this.sendSocketNotification('PRICEDATAERROR');
 					}
@@ -56,11 +57,12 @@ module.exports = NodeHelper.create({
      * front-end.
 	 *
 	 * @param Object The price data.
-	 * @param Int hourOffset The local time offset from CET/CEST
+	 * @param Int hourOffset The local time offset from CET/CEST.
+	 * @param Double priceOffset The offset to be added on top of the price.
 	 * @return Object The parsed price data or false, if an error
 	 * occurred.
 	 */
-	parsePriceData(data, hourOffset) {
+	parsePriceData(data, hourOffset, priceOffset) {
 		if(!data) {
 			return false;
 		}
@@ -70,6 +72,13 @@ module.exports = NodeHelper.create({
 		}
 		if(!hourOffset) {
 			hourOffset = 0;
+		}
+		console.log(priceOffset);
+		if(!priceOffset) {
+			priceOffset = 0;
+		}
+		else {
+			priceOffset = priceOffset * 1000;
 		}
 
 		data = data['data']['Rows'];
@@ -82,7 +91,7 @@ module.exports = NodeHelper.create({
 					let dp = row['Columns'][j];
 					
 					// Calculate price in euro cents per MWh
-					let value = parseInt(dp['Value'].replace(',', ''), 10);
+					let value = parseInt(dp['Value'].replace(',', ''), 10) + priceOffset;
 					let dtold = dp['Name'].substring(6, 10) + '-' + dp['Name'].substring(3, 5) + '-' + dp['Name'].substring(0, 2);
 
 					// Offset the hours to match the local time (Nord Pool hours are in CET/CEST)

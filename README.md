@@ -76,6 +76,11 @@ The module has the following configuration options:
       <td>The number of hours to offset the Nord Pool times that are given in CET/CEST. Value 1 corrects the time to Finland and the Baltics, 0 works for countries in the CET/CEST timezone, and -1 for countries in GMT.</td>
     </tr>
     <tr>
+      <td><code>priceOffset</code></td>
+	  <td><code>0</code></td>
+      <td>The amount of euro cents to add on top of the price. You can use this to add the transfer cost, comission and other costs to get the final price you are paying.</td>
+    </tr>
+    <tr>
       <td><code>showAverage</code></td>
 	  <td><code>false</code></td>
       <td>Flag to control whether the average price over seven days (future and past) is shown as a line on top of the bars.</td>
