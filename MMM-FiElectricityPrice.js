@@ -14,6 +14,7 @@ Module.register("MMM-FiElectricityPrice", {
 		showFutureHours: 36,
 		hourOffset: 1,
 		priceOffset: 0,
+		priceMultiplier: 1,
 		showAverage: true,
 		averageColor: '#fff',
 		showGrid: true,
@@ -77,7 +78,8 @@ Module.register("MMM-FiElectricityPrice", {
         this.sendSocketNotification('GET_PRICEDATA', {
 			url: this.config.dataSource,
 			hourOffset: this.config.hourOffset,
-			priceOffset: this.config.priceOffset
+			priceOffset: this.config.priceOffset,
+			priceMultiplier: this.config.priceMultiplier
 		});
     },
 
