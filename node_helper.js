@@ -94,7 +94,7 @@ module.exports = NodeHelper.create({
 					let dp = row['Columns'][j];
 					
 					// Calculate price in euro cents per MWh
-					let value = parseInt(dp['Value'].replace(',', ''), 10) * priceMultiplier + priceOffset;
+					let value = parseInt(dp['Value'].replace(',', '').replace(' ', ''), 10) * priceMultiplier + priceOffset;
 					let dtold = dp['Name'].substring(6, 10) + '-' + dp['Name'].substring(3, 5) + '-' + dp['Name'].substring(0, 2);
 
 					// Offset the hours to match the local time (Nord Pool hours are in CET/CEST)
