@@ -1,4 +1,7 @@
 # MMM-FiElectricityPrice
+
+### This module is no longer updated and you should use the new version instead: https://github.com/late4marshmellow/MMM-EUElectricityPrice
+
 Magic Mirror Module to display Finnish electricity prices from Nord Pool. The module can be used to show data from other regions from Nord Pool, but I have not tested it with them.
 
 The module loads the electricity prices when started and then every day at 16:01 local time of your MagicMirror installation. The prices are shown as a bar chart with optional average value and highlights for high and low prices, both limits are configurable.
